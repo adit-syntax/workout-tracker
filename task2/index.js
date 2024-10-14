@@ -74,3 +74,13 @@ function beginWorkout(){
         executeExercise();
     }
 }
+function startBreak(){
+    let breakDuration = 30;
+    document.querySelector('.timer').innerText = `Break: 00 : ${('0' + breakDuration).slice(-2)}`;
+    workoutInterval = setInterval(() => {
+        if (breakDuration > 0) {
+            breakDuration--;
+            document.querySelector('.timer').innerText = `Break: 00 : ${('0' + breakDuration).slice(-2)}`;
+        } else { clearInterval(workoutInterval); executeExercise(); }
+    }, 1000);
+}
