@@ -61,19 +61,30 @@ function executeExercise() {
         let duration = exercise.repDuration;
         workoutInterval = setInterval(() => {
             if (duration > 0) {
-                duration--; exercise.actualDuration++; totalTime++;
-                document.querySelector('.timer').innerText = `${exercise.name} ${currentRep + 1}/${exercise.reps} - 
-                00 : ${('0' + Math.floor(duration / 60)).slice(-2)} : ${('0' + duration % 60).slice(-2)}`;
+                duration--;
+                 exercise.actualDuration++;
+                  totalTime++;
+                  document.querySelector('.timer').innerText = `${exercise.name} ${currentRep + 1}/${exercise.reps} - 00 : ${('0' + Math.floor(duration / 60)).slice(-2)} : ${('0' + duration % 60).slice(-2)}`;
             } else {
-                clearInterval(workoutInterval); currentRep++;
-                if (currentRep < exercise.reps) { executeExercise(); } 
-                else {
-                    exercise.completed = true; currentExerciseIndex++; currentRep = 0;
-                    if (currentExerciseIndex < exercises.length) { startBreak(); } else { navigateToSummary(); }
+                clearInterval(workoutInterval);
+                 currentRep++;
+                if (currentRep < exercise.reps) { 
+                    executeExercise(); 
+                } else {
+                    exercise.completed = true; 
+                    currentExerciseIndex++; 
+                    currentRep = 0;
+                    if (currentExerciseIndex < exercises.length) {
+                         startBreak(); 
+                        } else { 
+                            navigateToSummary(); 
+                        }
                 }
             }
         }, 1000);
-    } else { navigateToSummary(); }
+    } else { navigateToSummary(); 
+
+    }
 }
 
 function startBreak(){
@@ -83,18 +94,32 @@ function startBreak(){
         if (breakDuration > 0) {
             breakDuration--;
             document.querySelector('.timer').innerText = `Break: 00 : ${('0' + breakDuration).slice(-2)}`;
-        } else { clearInterval(workoutInterval); executeExercise(); }
+        } else {
+             clearInterval(workoutInterval); 
+             executeExercise();
+             }
     }, 1000);
 }
 function skipExercise(index){
     if (index === currentExerciseIndex && !exercises[currentExerciseIndex].completed) {
-        clearInterval(workoutInterval); currentRep++;
-        if (currentRep < exercises[currentExerciseIndex].reps) { executeExercise(); } 
-        else {
-            exercises[currentExerciseIndex].completed = true; currentExerciseIndex++; currentRep = 0;
-            if (currentExerciseIndex < exercises.length) { startBreak(); } else { navigateToSummary(); }
+        clearInterval(workoutInterval);
+         currentRep++;
+        if (currentRep < exercises[currentExerciseIndex].reps) {
+             executeExercise();
+            }  else {
+            exercises[currentExerciseIndex].completed = true; 
+            currentExerciseIndex++; 
+            currentRep = 0;
+            if (currentExerciseIndex < exercises.length) {
+                 startBreak();
+                 } else {
+                     navigateToSummary();
+                     }
         }
-    } else { exercises.splice(index, 1); displayExercises(); }
+    } else {
+         exercises.splice(index, 1);
+          displayExercises(); 
+        }
 }
 function endWorkout(){
      learInterval(workoutInterval);
@@ -103,7 +128,10 @@ function endWorkout(){
 
 function navigateToSummary() {
     const summaryData = exercises.map(exercise => ({
-        name: exercise.name, reps: exercise.reps, plannedDuration: exercise.plannedDuration, actualDuration: exercise.actualDuration
+        name: exercise.name, 
+        reps: exercise.reps,
+         plannedDuration: exercise.plannedDuration,
+          actualDuration: exercise.actualDuration
     }));
     localStorage.setItem('workoutSummary', JSON.stringify(summaryData));
     localStorage.setItem('totalTime', totalTime);
