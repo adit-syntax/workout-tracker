@@ -84,3 +84,13 @@ function startBreak(){
         } else { clearInterval(workoutInterval); executeExercise(); }
     }, 1000);
 }
+function skipExercise(index){
+    if (index === currentExerciseIndex && !exercises[currentExerciseIndex].completed) {
+        clearInterval(workoutInterval); currentRep++;
+        if (currentRep < exercises[currentExerciseIndex].reps) { executeExercise(); } 
+        else {
+            exercises[currentExerciseIndex].completed = true; currentExerciseIndex++; currentRep = 0;
+            if (currentExerciseIndex < exercises.length) { startBreak(); } else { navigateToSummary(); }
+        }
+    } else { exercises.splice(index, 1); displayExercises(); }
+}
