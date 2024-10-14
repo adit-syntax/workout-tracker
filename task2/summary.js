@@ -13,3 +13,7 @@ function formatTime(seconds) {
     return `${minutes}:${('0' + (seconds % 60)).slice(-2)}`;
 }
 
+function restartWorkout() {
+    localStorage.removeItem('workoutSummary'); localStorage.removeItem('totalTime');
+    window.location.href = 'index.html';
+}
