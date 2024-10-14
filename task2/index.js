@@ -45,3 +45,32 @@ function displayExercises() {
         exerciseList.appendChild(exerciseItem);
     });
 }
+
+function executeExercise() {
+    if (currentExerciseIndex < exercises.length) {
+        const exercise = exercises[currentExerciseIndex];
+        let duration = exercise.repDuration;
+        workoutInterval = setInterval(() => {
+            if (duration > 0) {
+                duration--; exercise.actualDuration++; totalTime++;
+                document.querySelector('.timer').innerText = `${exercise.name} ${currentRep + 1}/${exercise.reps} - 
+                00 : ${('0' + Math.floor(duration / 60)).slice(-2)} : ${('0' + duration % 60).slice(-2)}`;
+            } else {
+                clearInterval(workoutInterval); currentRep++;
+                if (currentRep < exercise.reps) { executeExercise(); } 
+                else {
+                    exercise.completed = true; currentExerciseIndex++; currentRep = 0;
+                    if (currentExerciseIndex < exercises.length) { startBreak(); } else { navigateToSummary(); }
+                }
+            }
+        }, 1000);
+    } else { navigateToSummary(); }
+}
+function beginWorkout(){
+    if (exercises.length >= 0) {
+        currentExerciseIndex = 0;
+        currentRep = 0;
+        document.querySelector('.timer').innerText = '00 : 00';
+        executeExercise();
+    }
+}
