@@ -8,7 +8,7 @@ body{
     align-items: center;
     color: white;
 }
-.header{
+.header, .footer{
     background-color: #f39c12;
     color: black;
     font-size: 24px;
@@ -27,23 +27,26 @@ body{
     box-shadow: 5px 5px 0px 0px #000000;
     color: black;
 }
+.summary-item {
+    background-color: #1abc9c;
+    padding: 10px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 2px 2px 0px 0px #000000;
+}
+.summary-item span { font-size: 18px; }
+.footer { display: flex; justify-content: space-between; align-items: center; width: 80%; }
+.footer span { font-size: 24px; }
 .footer button{
-    background-color: #f39c12;
+    background-color: #57f355;
     color: black;
     font-size: 24px;
     font-weight: bold;
     padding: 10px 20px;
     border: none;
     box-shadow: 2px 2px 0px 0px #000000;
+    cursor: pointer;
 }
-.footer{
-    background-color: #f39c12;
-    color: black;
-    font-size: 24px;
-    font-weight: bold;
-    padding: 20px;
-    width: 80%;
-    text-align: center;
-    margin-top: 20px;
-    box-shadow: 5px 5px 0px 0px #000000;
-}
+@media (max-width: 768px) { .header, .footer, .summary-container { width: 95%; } }

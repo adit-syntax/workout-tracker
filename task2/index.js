@@ -122,7 +122,7 @@ function skipExercise(index){
         }
 }
 function endWorkout(){
-     learInterval(workoutInterval);
+     clearInterval(workoutInterval);
       navigateToSummary(); 
     }
 

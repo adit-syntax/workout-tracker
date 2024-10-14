@@ -7,7 +7,7 @@ body{
     flex-direction: column;
     align-items: center;
    }
-   .header{
+   .header, .footer{
     background-color: #f39c12;
     color: black;
     font-size: 24px;
@@ -21,11 +21,12 @@ body{
    .timer{
     float: right;
     padding: 10px 20px;
-    background-color: #f39c12;
+    background-color: #ff000c;
     border: none;
     color: black;
     font-weight: bold;
     box-shadow: 2px 2px 0px 0px #000000;
+    cursor: pointer;
 }
 .workout-container{
     background-color: #1abc9c;
@@ -47,9 +48,34 @@ body{
     color: black;
     font-weight: bold;
     box-shadow: 2px 2px 0px 0px #000000;
+    cursor: pointer;
+}
+.workout-container hr {
+    border: 1px solid #000000;
+    margin: 20px 0;
+}
+.exercise-item {
+    background-color: #1abc9c;
+    padding: 10px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 2px 2px 0px 0px #000000;
+    cursor: pointer;
+}
+.exercise-item span {
+    font-size: 18px;
+}
+.exercise-item button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    box-shadow: 2px 2px 0px 0px #000000;
 }
 .footer button{
-    background-color: #f39c12;
+    background-color: #57f355;
     color: black;
     font-size: 24px;
     font-weight: bold;
@@ -57,15 +83,9 @@ body{
     width: 100%;
     border: none;
     box-shadow: 5px 5px 0px 0px #000000;
+    cursor: pointer;
 }
-.footer {
-    background-color: #f39c12;
-    color: black;
-    font-size: 24px;
-    font-weight: bold;
-    padding: 20px;
-    width: 80%;
-    text-align: center;
-    margin-top: 20px;
-    box-shadow: 5px 5px 0px 0px #000000;
+@media (max-width: 768px) {
+    .header, .footer, .workout-container { width: 95%; }
 }
+
