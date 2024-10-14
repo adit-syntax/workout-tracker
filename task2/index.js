@@ -46,6 +46,15 @@ function displayExercises() {
     });
 }
 
+function beginWorkout(){
+    if (exercises.length > 0){
+        currentExerciseIndex = 0;
+        currentRep = 0;
+        document.querySelector('.timer').innerText = '00 : 00 : 00';
+        executeExercise();
+    }
+}
+
 function executeExercise() {
     if (currentExerciseIndex < exercises.length) {
         const exercise = exercises[currentExerciseIndex];
@@ -66,14 +75,7 @@ function executeExercise() {
         }, 1000);
     } else { navigateToSummary(); }
 }
-function beginWorkout(){
-    if (exercises.length >= 0) {
-        currentExerciseIndex = 0;
-        currentRep = 0;
-        document.querySelector('.timer').innerText = '00 : 00';
-        executeExercise();
-    }
-}
+
 function startBreak(){
     let breakDuration = 30;
     document.querySelector('.timer').innerText = `Break: 00 : ${('0' + breakDuration).slice(-2)}`;
@@ -98,7 +100,7 @@ function endWorkout(){
      learInterval(workoutInterval);
       navigateToSummary(); 
     }
-    
+
 function navigateToSummary() {
     const summaryData = exercises.map(exercise => ({
         name: exercise.name, reps: exercise.reps, plannedDuration: exercise.plannedDuration, actualDuration: exercise.actualDuration
