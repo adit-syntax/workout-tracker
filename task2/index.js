@@ -31,3 +31,17 @@ function addExercise() {
         document.getElementById('exerciseSeconds').value = '';
     }
 }
+
+function displayExercises() {
+    const exerciseList = document.getElementById('exerciseList');
+    exerciseList.innerHTML = '';
+    exercises.forEach((exercise, index) => {
+        const exerciseItem = document.createElement('div');
+        exerciseItem.className = 'exercise-item';
+        exerciseItem.innerHTML = `
+            <span>${exercise.name} -- x${exercise.reps} -- ${Math.floor(exercise.repDuration / 60)}:${('0' + exercise.repDuration % 60).slice(-2)}</span>
+            <button onclick="skipExercise(${index})">Skip</button>
+        `;
+        exerciseList.appendChild(exerciseItem);
+    });
+}
