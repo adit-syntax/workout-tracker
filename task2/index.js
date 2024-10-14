@@ -94,3 +94,16 @@ function skipExercise(index){
         }
     } else { exercises.splice(index, 1); displayExercises(); }
 }
+function endWorkout(){
+     learInterval(workoutInterval);
+      navigateToSummary(); 
+    }
+    
+function navigateToSummary() {
+    const summaryData = exercises.map(exercise => ({
+        name: exercise.name, reps: exercise.reps, plannedDuration: exercise.plannedDuration, actualDuration: exercise.actualDuration
+    }));
+    localStorage.setItem('workoutSummary', JSON.stringify(summaryData));
+    localStorage.setItem('totalTime', totalTime);
+    window.location.href = 'summary.html';
+}
