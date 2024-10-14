@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Tracker</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="header">
+        Track Your Reps & Time Efficiently
+        <button class="timer" onclick="beginWorkout()">BEGIN WORKOUT</button>
+    </div>
+    <div class="workout-container">
+        <input type="text" id="exerciseName" placeholder="Add Your Exercise">
+        <input type="number" id="exerciseReps" placeholder="Reps" min="1" style="width: 50px;">
+        <input type="number" id="exerciseMinutes" placeholder="MM" min="0" max="59" style="width: 50px;">
+        <input type="number" id="exerciseSeconds" placeholder="SS" min="0" max="59" style="width: 50px;">
+        <button onclick="addExercise()">Add to Workout Plan</button>
+        <hr>
+        <div id="exerciseList"></div>
+    </div>
+    <div class="footer">
+        <button onclick="endWorkout()">End Workout</button>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
